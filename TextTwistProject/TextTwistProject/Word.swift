@@ -16,6 +16,8 @@ struct Word {
             Word(unscrambled: "buzzer"),
             Word(unscrambled: "jumped"),
             Word(unscrambled: "fixing")
-        ].randomElement()!
+            ].randomElement()!
     }
 }
+
+
