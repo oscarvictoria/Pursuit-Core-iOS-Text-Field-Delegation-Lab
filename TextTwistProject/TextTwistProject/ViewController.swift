@@ -25,7 +25,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        userInput.delegate = self
     }
     
     // MARK: Actions and Methods
@@ -37,8 +37,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func nextWord(_ sender: UIButton) {
-        
+        scrambledWord.text = Word.getRandomWord().scrambled
     }
+    
+    
+    
+    
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        userInput.resignFirstResponder()
+        return true
+    }
+    
     
     
 }
