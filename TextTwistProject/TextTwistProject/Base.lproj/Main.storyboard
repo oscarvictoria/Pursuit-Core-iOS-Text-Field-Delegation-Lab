@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,7 +28,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="userInputAction:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="RAh-iX-aZu"/>
+                                    <action selector="userInputWhileEditing:" destination="BYZ-38-t0r" eventType="editingChanged" id="tLJ-7G-ddi"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oyf-6f-BBF">
@@ -53,7 +53,7 @@
                     </view>
                     <connections>
                         <outlet property="nextWordOutlet" destination="oyf-6f-BBF" id="ziw-Ay-hWV"/>
-                        <outlet property="scrambledWord" destination="YBU-np-nAv" id="WuQ-9s-44M"/>
+                        <outlet property="scrambledWordLabel" destination="YBU-np-nAv" id="WuQ-9s-44M"/>
                         <outlet property="userInput" destination="0gF-Kq-iVo" id="V1c-cf-j1z"/>
                     </connections>
                 </viewController>
