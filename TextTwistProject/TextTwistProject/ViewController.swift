@@ -17,12 +17,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var userInput: UITextField!
     
+    @IBOutlet weak var nextWordOutlet: UIButton!
     
+    var randomScrambledWord = String()
     
+    var unscrabledWord = String()
     
+    var instanceOfWord = Word.getRandomWord().scrambled
     
-   
-    
+ 
+//    func getUnscrambledWord(_ someWord:String) -> String {
+//
+//        for word in instanceOfWord {
+//            let someWord = Word.getRandomWord().scrambled
+//            let unscrambledWord = Word.getRandomWord().unscrambled
+//        }
+//
+//        return unscrabledWord
+//    }
+//
     override func viewDidLoad() {
         super.viewDidLoad()
         userInput.delegate = self
@@ -37,7 +50,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func nextWord(_ sender: UIButton) {
-        scrambledWord.text = Word.getRandomWord().scrambled
+        randomScrambledWord =
+        Word.getRandomWord().scrambled
+        scrambledWord.text = randomScrambledWord
+       // print(randomScrambledWord)
     }
     
     
@@ -46,12 +62,33 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
+       
         userInput.resignFirstResponder()
         return true
     }
     
     
+ func textField(_ textField: UITextField,
+                shouldChangeCharactersIn range: NSRange,
+                replacementString string: String) -> Bool {
+
+     if var oldString = textField.text {
+        let newString = oldString.replacingCharacters(in: Range(range, in: oldString)!, with: unscrabledWord)
+        oldString = randomScrambledWord
+//        newString = oldString += unscrabledWord
+        print(oldString)
+        print(newString)
+     }
+    
+    return true
+ }
+    
+    
+    
+//    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+//        print("TextFieldShould clear")
+//        return true
+//    }
     
 }
 

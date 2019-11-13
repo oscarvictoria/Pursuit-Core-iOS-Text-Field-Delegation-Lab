@@ -52,6 +52,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="nextWordOutlet" destination="oyf-6f-BBF" id="ziw-Ay-hWV"/>
                         <outlet property="scrambledWord" destination="YBU-np-nAv" id="WuQ-9s-44M"/>
                         <outlet property="userInput" destination="0gF-Kq-iVo" id="V1c-cf-j1z"/>
                     </connections>
