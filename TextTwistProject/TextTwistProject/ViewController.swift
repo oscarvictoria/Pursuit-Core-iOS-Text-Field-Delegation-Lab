@@ -40,9 +40,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 // Not currently implemented, maybe for replacing characters in scrambledWordLabel?
     
-//    @IBAction func userInputWhileEditing(_ sender: UITextField) {
-//
-//    }
+    @IBAction func userInputWhileEditing(_ sender: UITextField) {
+
+    }
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -53,7 +53,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             nextWordButton.isEnabled = true
             userInput.text = "" // clears the user input
         } else {
-            print("Incorrect, try again.")
+            mainMessageLabel.text = "Incorrect, try again"
             view.backgroundColor = .red
         }
         
@@ -61,12 +61,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+
+        if scrambledWordLabel.text?.contains(string) ?? false {
+            scrambledWordLabel.text?.remove(at: (scrambledWordLabel.text?.firstIndex(of: Character(string)))!)
+        } else if string == " " {
+            scrambledWordLabel.text?.insert(textField.text?.last ?? "a", at: scrambledWordLabel.text!.endIndex)
+        } else {
+            return true
+        }
         
-        let nsString = scrambledWord as NSString?
-        let newString = nsString?.replacingCharacters(in: range, with: "X")
-        print("\(String(describing: nsString))")
-        print("Replacement Text: \(String(describing: newString))")
+//        let nsString = scrambledWord as NSString?
+//        let newString = nsString?.replacingCharacters(in: range, with: "X")
+//        print("\(String(describing: nsString))")
+//        print("Replacement Text: \(String(describing: newString))")
+//        scrambledWordLabel.text = newString
         return true
     }
+    
+   
+  
 }
 
