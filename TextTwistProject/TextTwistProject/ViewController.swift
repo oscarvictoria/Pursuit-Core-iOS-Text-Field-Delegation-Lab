@@ -21,9 +21,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     var randomScrambledWord = String()
     
-    var unscrabledWord = String()
+    var instanceOfWord = Word.getRandomWord()
     
-    var instanceOfWord = Word.getRandomWord().scrambled
+    var randomWord = String()
     
  
 //    func getUnscrambledWord(_ someWord:String) -> String {
@@ -68,20 +68,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     
- func textField(_ textField: UITextField,
-                shouldChangeCharactersIn range: NSRange,
-                replacementString string: String) -> Bool {
-
-     if var oldString = textField.text {
-        let newString = oldString.replacingCharacters(in: Range(range, in: oldString)!, with: unscrabledWord)
-        oldString = randomScrambledWord
-//        newString = oldString += unscrabledWord
-        print(oldString)
-        print(newString)
-     }
-    
-    return true
- }
     
     
     
