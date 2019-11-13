@@ -14,47 +14,58 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var scrambledWordLabel: UILabel!
     @IBOutlet weak var userInput: UITextField!
-    @IBOutlet weak var nextWordOutlet: UIButton!
+    @IBOutlet weak var nextWordButton: UIButton!
+    @IBOutlet weak var mainMessageLabel: UILabel!
     
     
-    //var scrambledWord = Word.getRandomWord()
     var randomWord = Word.getRandomWord()
     var scrambledWord = String()
     
- 
-
     //MARK: viewDidLoad
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         userInput.delegate = self
-        
+        nextWordButton.isEnabled = true
     }
     
     // MARK: Actions and Methods
-    
-    @IBAction func userInputWhileEditing(_ sender: UITextField) {
-        //instanceOfWord
-        print(sender.text ?? "ERROR")
-        scrambledWord = randomWord.scrambled
-        if scrambledWord.contains(String(sender.text ?? "ERROR")) {
-            print("We have a match")
-        }
-    }
-    
     @IBAction func nextWord(_ sender: UIButton) {
-        print(randomWord)
-        print(scrambledWord)
-        
+        randomWord = Word.getRandomWord()
+       // print(randomWord) **cheat**
+        scrambledWord = randomWord.scrambled
         scrambledWordLabel.text = String(scrambledWord)
-        nextWordOutlet.isEnabled = false
+        nextWordButton.isEnabled = false
+        view.backgroundColor = .white
+        mainMessageLabel.text = ""
     }
+// Not currently implemented, maybe for replacing characters in scrambledWordLabel?
+    
+//    @IBAction func userInputWhileEditing(_ sender: UITextField) {
+//
+//    }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         userInput.resignFirstResponder()
+        if randomWord.unscrambled == userInput.text {
+            mainMessageLabel.text = "Correct!"
+            view.backgroundColor = .green
+            nextWordButton.isEnabled = true
+            userInput.text = "" // clears the user input
+        } else {
+            print("Incorrect, try again.")
+            view.backgroundColor = .red
+        }
+        
         return true
     }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let nsString = scrambledWord as NSString?
+        let newString = nsString?.replacingCharacters(in: range, with: "X")
+        print("\(String(describing: nsString))")
+        print("Replacement Text: \(String(describing: newString))")
         return true
     }
 }
